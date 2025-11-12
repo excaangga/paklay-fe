@@ -27,7 +27,7 @@ export default function ServiceCard({ imageSrc, serviceNumber, title, descriptio
       onClick={handleOnClick}
       className="max-size-64 border border-gray-300 h-full w-full rounded-lg hover:cursor-pointer"
     >
-      <div className="flex flex-col justify-center items-center text-center gap-4 p-8">
+      <div className="flex flex-col h-full justify-start items-center text-center gap-4 p-8">
         <img src={imageSrc} className="size-24" />
         <div className="font-bold">
           { !!serviceNumber && (

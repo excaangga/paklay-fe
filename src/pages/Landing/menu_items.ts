@@ -21,7 +21,7 @@ export const menuItems = [
     imageSrc: '/src/assets/menu_paklay_5.svg',
     serviceNumber: 5,
     title: 'Perpindahan Keluar',
-    description: 'Pindah Antar Kabupaten/Kota/Provinsi'
+    description: 'Pindah Antar Kabupaten/ Kota/ Provinsi'
   },
   {
     imageSrc: '/src/assets/menu_paklay_6.svg',

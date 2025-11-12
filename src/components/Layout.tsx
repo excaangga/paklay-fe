@@ -5,6 +5,7 @@ import phoneIcon from './../assets/phone.svg'
 import whatsappIcon from './../assets/whatsapp.svg'
 import paklayIcon from './../assets/paklay.svg'
 import plusIcon from './../assets/plus.svg'
+import burgerIcon from './../assets/burger.svg'
 import Button from './Button';
 import {useState} from 'react';
 
@@ -17,12 +18,14 @@ export default function Layout() {
   const navigate = useNavigate()
   
   const [ctx, setCtx] = useState(initialCtx)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   function handleLoginButton() {
     navigate('/masuk')
     setCtx({
       isAuthenticated: true
     })
+    setMenuOpen(false)
   }
 
   // TODO: implement the real function
@@ -32,6 +35,7 @@ export default function Layout() {
     setCtx({
       isAuthenticated: false
     })
+    setMenuOpen(false)
   }
 
   return (
@@ -49,13 +53,56 @@ export default function Layout() {
 
         {/* Navbar - Mobile */}
         <div className='flex justify-between items-center px-6 py-4 shadow-xl border-t border-gray-100 md:hidden'>
-          <div>
-            <img src={paklayIcon} className='w-32' />
-          </div>
-          <div>
-            <img src={plusIcon} className='size-5' />
-          </div>
+          <img src={paklayIcon} className='w-32' />
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            <img src={menuOpen ? plusIcon : burgerIcon} className={`size-5 transition-transform ${menuOpen ? "rotate-45" : ""}`} />
+          </button>
         </div>
+
+        {menuOpen && (
+          <div className="flex flex-col bg-white border-t border-gray-200 shadow-xl md:hidden">
+            <Link to="/" className="py-3 font-bold border-b border-gray-300" onClick={() => setMenuOpen(false)}>
+              <div className='px-6'>
+                Beranda
+              </div>
+            </Link>
+            {ctx.isAuthenticated && (
+              <div className="flex flex-col">
+                <Link 
+                  to="/dashboard-pelapor" 
+                  className="py-3 font-light border-b border-gray-300" 
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <div className='px-6'>
+                    Dashboard Pelapor
+                  </div>
+                </Link>
+                <Link to="/profil" className="py-3 font-light" onClick={() => setMenuOpen(false)}>
+                  <div className='px-6'>
+                    Profil
+                  </div>
+                </Link>
+              </div>
+            )}
+            <div className="">
+              {!ctx.isAuthenticated ? (
+                <button 
+                  onClick={handleLoginButton}
+                  className='w-full bg-blue2 px-6 py-3 text-left text-white font-bold'
+                >
+                  Masuk
+                </button>
+              ) : (
+                <button 
+                  onClick={handleLogoutButton}
+                  className='w-full bg-blue2 px-6 py-3 text-left text-white font-bold'
+                >
+                  Keluar
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Navbar - Medium upwards screen */}
         <div className='flex justify-between items-center px-16 py-4 shadow-xl border-t border-gray-100 hidden md:flex'>

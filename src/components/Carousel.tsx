@@ -38,7 +38,7 @@ export default function Carousel({ items }: CarouselProps) {
           className="w-full max-w-[80%] md:max-w-[60%] h-64 object-cover lg:hidden"
         />
       ) : (
-        <div className="w-full max-w-[80%] md:max-w-[60%] h-64 bg-green-200 mt-16 lg:hidden" />
+        <div className="w-full max-w-[80%] md:max-w-[60%] h-64 bg-green-200  lg:hidden" />
       )}
 
       {/* Text and image (desktop) */}
