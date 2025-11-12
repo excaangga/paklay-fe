@@ -181,7 +181,7 @@ export default function Layout() {
 
 
         <div className='border-t border-blue2 mt-4'>
-          <div className='hidden text-center md:block md:mt-6'>
+          <div className='text-center mt-4 md:mt-6'>
             ©2024. Powered by Dinas Komunikasi dan Informatika Kabupaten Karanganyar. PAKLAY v1.0.01
           </div>
         </div>
